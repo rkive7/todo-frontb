@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         />
 
         {/* Redirecciones */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
         
         {/* Cualquier ruta desconocida manda al login */}
         <Route path="*" element={<Navigate to="/login" replace />} />

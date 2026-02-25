@@ -41,4 +41,8 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    host: true,  // Esto permite que el servidor sea visible en tu red Wi-Fi
+    port: 5173,  // Opcional, asegura el puerto
+  }
 });
