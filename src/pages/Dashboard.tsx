@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api, setAuth } from "../api";
 import {
   cacheTasks,
@@ -47,6 +48,7 @@ function normalizeTask(x: any): Task {
 }
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("");
@@ -258,7 +260,7 @@ export default function Dashboard() {
   function logout() {
     localStorage.removeItem("token");
     setAuth(null);
-    window.location.href = "/"; // login
+    navigate("/login");
   }
 
   const filtered = useMemo(() => {
@@ -295,6 +297,9 @@ export default function Dashboard() {
             {online ? "Online" : "Offline"}
           </span>
         </div>
+        <button className="btn" onClick={() => navigate("/actividad")} style={{ marginRight: "10px" }}>
+        Ver Historial
+        </button>
         <button className="btn danger" onClick={logout}>Salir</button>
       </header>
 

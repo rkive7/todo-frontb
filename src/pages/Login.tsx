@@ -15,6 +15,8 @@ export default function Login() {
         e.preventDefault();
         setError("");
         setLoading(true);
+        
+        // ¡Aquí estaba el problema! Faltaba abrir la llave del try
         try {
             const { data } = await api.post("/auth/login", { email, password });
             console.log("Token recibido:", data.token);
@@ -66,11 +68,9 @@ export default function Login() {
                         </button>
                     </div>
                     
-                    {/* Corrección de la llave extra que tenías aquí */}
                     {error && <p className="alert">{error}</p>}
                     
-                    {/* Corrección de sintaxis disabled>={loading} */}
-                    <button className="btn primary" disabled={loading}>
+                    <button type="submit" className="btn primary" disabled={loading}>
                         {loading ? "Cargando..." : "Iniciar Sesion"}
                     </button>
                 </form>

@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import ProtectRoute from "./routes/ProtectedRoute"; 
+import ProtectRoute from "./routes/ProtectedRoute";
+import ActivityLog from "./pages/ActivityLog"; 
 
 import "./index.css";
 
@@ -25,6 +26,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             </ProtectRoute>
           } 
         />
+        <Route 
+          path="/actividad" 
+          element={
+            <ProtectRoute>
+              <ActivityLog />
+             </ProtectRoute>
+           } 
+/>
 
         {/* Redirecciones */}
         <Route path="/" element={<Navigate to="/login" replace />} />
