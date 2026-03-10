@@ -9,18 +9,16 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       
-      // 👇 AGREGAMOS ESTA SECCIÓN (El paracaídas offline) 👇
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         navigateFallback: '/index.html',
       },
-      // 👆 HASTA AQUÍ 👆
 
       manifest: {
         name: "Todo App",
         short_name: "Todo",
         description: "Una aplicacion de tareas simple",
-        start_url: "/", // <-- Cambiamos "./" por "/"
+        start_url: "/",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#f0346f",

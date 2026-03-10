@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api";
 
-// Definimos cómo se ve un Log
 type Log = {
   _id: string;
   action: string;
@@ -16,14 +15,12 @@ export default function ActivityLog() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Pedimos el chisme al backend
     api.get("/activity")
       .then((res) => setLogs(res.data.logs))
       .catch((err) => console.error("Error al cargar historial", err))
       .finally(() => setLoading(false));
   }, []);
 
-  // Función para darle un color diferente a cada acción
   const getBadgeColor = (action: string) => {
     switch (action) {
       case "CREADA": return "#238636"; // Verde
